@@ -2,7 +2,7 @@
 
 print "Hello World";
 
-?>
+
 
 <html>
 <head><title>Best page ever</title>
