@@ -16,7 +16,7 @@ $result = $rds->createDBInstance([
    # 'DBClusterIdentifier' => '<string>',
     'DBInstanceClass' => 'db.t1.micro', // REQUIRED
     'DBInstanceIdentifier' => 'mp1-jrh', // REQUIRED
-    #'DBName' => 'customerrecords',
+    'DBName' => 'customerrecords',
     #'DBParameterGroupName' => '<string>',
     #'DBSecurityGroups' => ['<string>', ...],
     #'DBSubnetGroupName' => '<string>',
@@ -49,6 +49,38 @@ $result = $rds->createDBInstance([
 
 print "Create RDS DB results: \n";
 print_r($rds);
+
+
+
+
+// Create a table 
+$result = $rds->describeDBInstances([
+    'DBInstanceIdentifier' => 'mp1-jrh',
+]);
+
+
+$endpoint = $result['DBInstances']['Endpoint']['Address']
+    echo "============\n". $endpoint . "================";^M
+
+
+
+$link = mysqli_connect($endpoint,"controller","letmein888","3306") or die("Error " . mysqli_error($link)); 
+
+echo "Here is the result: " . $link;
+
+
+$sql = "CREATE TABLE comments 
+(
+ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+PosterName VARCHAR(32),
+Title VARCHAR(32),
+Content VARCHAR(500)
+)";
+
+$con->query($sql);
+
+
+
 
 ?>
 

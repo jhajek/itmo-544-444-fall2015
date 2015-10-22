@@ -62,24 +62,32 @@ $result = $client->putObject([
 $url = $result['ObjectURL'];
 echo $url;
 
-use Aws\Rds\RdsClient;
-$client = RdsClient::factory(array(
-'region'  => 'us-east-1'
-));
+$rds = new Aws\Rds\RdsClient([
+    'version' => 'latest',
+    'region'  => 'us-east-1'
+]);
 
-$result = $client->describeDBInstances(array(
-    'DBInstanceIdentifier' => 'itmo544jrhdb',
-));
 
-$endpoint = "";
+$result = $rds->describeDBInstances([
+    'DBInstanceIdentifier' => 'mp1-jrh',
+    #'Filters' => [
+    #    [
+    #        'Name' => '<string>', // REQUIRED
+    #        'Values' => ['<string>', ...], // REQUIRED
+    #    ],
+        // ...
+   # ],
+   # 'Marker' => '<string>',
+   # 'MaxRecords' => <integer>,
+]);
 
-foreach ($result->getPath('DBInstances/*/Endpoint/Address') as $ep) {
-    // Do something with the message
-    echo "============". $ep . "================";
-    $endpoint = $ep;
-}   
-//echo "begin database";
-$link = mysqli_connect($endpoint,"controller","ilovebunnies","itmo544db") or die("Error " . mysqli_error($link));
+
+$endpoint = $result['DBInstances']['Endpoint']['Address']
+    echo "============\n". $endpoint . "================";^M
+
+//echo "begin database";^M
+$link = mysqli_connect($endpoint,"controller","letmein888","customerrecords") or die("Error " . mysqli_error($link));
+
 
 /* check connection */
 if (mysqli_connect_errno()) {
