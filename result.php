@@ -38,8 +38,8 @@ $bucket = uniqid("php-jrh-",false);
 # AWS PHP SDK version 3 create bucket
 $result = $s3->createBucket([
     'ACL' => 'public-read',
-    'Bucket' => $bucket 
-)];
+    'Bucket' => $bucket
+]);
 
 #$client->waitUntilBucketExists(array('Bucket' => $bucket));
 #Old PHP SDK version 2
@@ -56,7 +56,7 @@ $result = $client->putObject([
     'ACL' => 'public-read',
     'Bucket' => $bucket,
    'Key' => $uploadfile
-)];  
+]);  
 
 
 $url = $result['ObjectURL'];
