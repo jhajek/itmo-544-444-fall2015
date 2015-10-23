@@ -1,6 +1,6 @@
 <?php
 // Start the session^M
-require 'vendor/autoload.php';^M
+require 'vendor/autoload.php';
 $rds = new Aws\Rds\RdsClient([
     'version' => 'latest',
     'region'  => 'us-east-1'
@@ -48,7 +48,7 @@ $result = $rds->createDBInstance([
 ]);
 
 print "Create RDS DB results: \n";
-print_r($rds);
+# print_r($rds);
 
 
 
@@ -59,8 +59,8 @@ $result = $rds->describeDBInstances([
 ]);
 
 
-$endpoint = $result['DBInstances']['Endpoint']['Address']
-    echo "============\n". $endpoint . "================";^M
+$endpoint = $result['DBInstances']['Endpoint']['Address'];
+print "============\n". $endpoint . "================\n";
 
 
 
