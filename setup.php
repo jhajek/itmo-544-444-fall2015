@@ -60,7 +60,7 @@ $result = $rds->describeDBInstances([
 ]);
 
 
-$endpoint = $result['DBInstances']['Endpoint']['Address'];
+$endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
 print "============\n". $endpoint . "================\n";
 
 
