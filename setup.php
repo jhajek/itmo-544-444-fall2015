@@ -80,8 +80,5 @@ Content VARCHAR(500)
 
 $con->query($sql);
 
-
-
-
 ?>
 
